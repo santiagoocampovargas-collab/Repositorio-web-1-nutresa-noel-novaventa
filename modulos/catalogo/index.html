@@ -1,21 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sazón · Catálogo</title>
   <link rel="stylesheet" href="../../assets/css/sazon.css">
+  <link rel="stylesheet" href="catalogo.css">
 </head>
 <body>
   <header data-layout="header"></header>
+
   <main class="contenedor pagina-modulo">
     <section class="bloque-modulo">
       <h1>Módulo Catálogo</h1>
       <p>Base lista para desarrollar historias de usuario del catálogo.</p>
       <div id="catalogo-estado" class="mensaje-estado" role="status"></div>
+
+      <!-- ===== G1-MAR · Marca · inicio ===== -->
+      <section class="catalogo-marcas" aria-labelledby="catalogo-marcas-titulo">
+        <h2 id="catalogo-marcas-titulo" class="catalogo-solo-lector">Filtrar por marca</h2>
+        <div id="catalogo-marcas"></div>
+        <p id="catalogo-error" class="catalogo-error" role="alert" hidden></p>
+      </section>
+      <!-- ===== G1-MAR · Marca · fin ===== -->
     </section>
   </main>
+
   <footer data-layout="footer"></footer>
+
   <script src="../../services/api.config.js"></script>
   <script src="../../data/usuario.js"></script>
   <script src="../../data/productos.js"></script>
