@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sazón · Catálogo</title>
   <link rel="stylesheet" href="../../assets/css/sazon.css">
+    <link rel="stylesheet" href="catalogo.css">
 </head>
 <body>
   <header data-layout="header"></header>
@@ -13,6 +14,32 @@
       <h1>Módulo Catálogo</h1>
       <p>Base lista para desarrollar historias de usuario del catálogo.</p>
       <div id="catalogo-estado" class="mensaje-estado" role="status"></div>
+    </section>
+        <section class="catalogo-marca-nueva" aria-labelledby="catalogo-marca-titulo">
+      <h2 id="catalogo-marca-titulo">Registrar nueva marca</h2>
+
+      <form id="catalogo-marca-form" novalidate>
+        <fieldset>
+          <legend>Datos de la marca</legend>
+
+          <div class="catalogo-campo">
+            <label for="catalogo-marca-id">Identificador</label>
+            <input type="number" id="catalogo-marca-id" name="idMarca" readonly>
+          </div>
+
+          <div class="catalogo-campo">
+            <label for="catalogo-marca-nombre">Nombre de la marca</label>
+            <input type="text" id="catalogo-marca-nombre" name="nombreMarca"
+                   required minlength="2" maxlength="40" autocomplete="off"
+                   aria-describedby="catalogo-marca-errores">
+          </div>
+        </fieldset>
+
+        <div id="catalogo-marca-errores" class="catalogo-alerta" role="alert"></div>
+        <p id="catalogo-marca-exito" class="catalogo-exito" role="status"></p>
+
+        <button type="submit" class="catalogo-marca-guardar">Guardar marca</button>
+      </form>
     </section>
   </main>
   <footer data-layout="footer"></footer>

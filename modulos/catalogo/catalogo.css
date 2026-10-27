@@ -1,0 +1,114 @@
+/* ===== G1-MAR · Marca crear · inicio ===== */
+.catalogo-marca-nueva {
+  max-width: 32rem;
+  margin: 1.5rem auto 0;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+}
+
+.catalogo-marca-nueva h2 {
+  margin: 0 0 1rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--verde-hondo);
+}
+
+.catalogo-marca-nueva fieldset {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+}
+
+.catalogo-marca-nueva legend {
+  padding: 0 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: var(--verde-hondo);
+}
+
+.catalogo-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.catalogo-campo label {
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.catalogo-campo input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  font: inherit;
+  color: var(--texto);
+  background: var(--card);
+}
+
+.catalogo-campo input:focus-visible {
+  outline: 3px solid var(--hoja);
+  outline-offset: 1px;
+}
+
+.catalogo-campo input[readonly] {
+  background: var(--crema-2);
+  color: var(--gris);
+}
+
+.catalogo-campo input[aria-invalid="true"] {
+  border-color: var(--rojo);
+}
+
+.catalogo-alerta {
+  color: var(--rojo);
+  font-weight: 500;
+}
+
+.catalogo-alerta ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.catalogo-exito {
+  margin: 0.75rem 0 0;
+  color: var(--verde-hondo);
+  font-weight: 600;
+}
+
+.catalogo-marca-guardar {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--verde-hondo);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.catalogo-marca-guardar:hover {
+  background: var(--verde);
+}
+
+.catalogo-marca-guardar:focus-visible {
+  outline: 3px solid var(--hoja);
+  outline-offset: 2px;
+}
+
+.catalogo-marca-guardar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .catalogo-marca-nueva {
+    margin: 1rem auto 0;
+    padding: 1rem;
+  }
+}
+/* ===== G1-MAR · Marca crear · fin ===== */
