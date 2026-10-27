@@ -1,191 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sazón · Catálogo</title>
-  <link rel="stylesheet" href="../../assets/css/sazon.css">
-  <link rel="stylesheet" href="catalogo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Mock API · Nutresa</title>
+    <link rel="stylesheet" href="catalogo.css">
 </head>
 <body>
-  <header data-layout="header"></header>
+    <header class="header">
+        <h1>Laboratorio de Pruebas Mock API</h1>
+    </header>
 
-  <main class="contenedor pagina-modulo">
-    <section class="bloque-modulo">
-      <h1>Módulo Catálogo</h1>
-      <p>Base lista para desarrollar historias de usuario del catálogo.</p>
-      <div id="catalogo-estado" class="mensaje-estado" role="status"></div>
+    <main class="contenedor">
+        <section class="vitrina-seccion">
+            <h2>Vitrina de Productos Nutresa</h2>
+            
+            <!-- Botón para desencadenar la petición a la Mock API -->
+            <div class="acciones">
+                <button id="btn-cargar" class="btn-principal">Cargar Productos desde Mock API</button>
+            </div>
 
-<!-- ===== G1-BUS · HU 5.1: Motor de Búsqueda (Katherin Ortega) · inicio ===== -->
-<section class="catalogo-busqueda-seccion" aria-label="Búsqueda de productos">
-  <form id="catalogo-form-busqueda" class="catalogo-busqueda-bar" role="search">
-    <label for="catalogo-input-busqueda" class="catalogo-solo-lector">
-      Buscar productos por nombre o descripción
-    </label>
-    <span class="catalogo-busqueda-icono" aria-hidden="true">🔍</span>
-    <input 
-      type="search" 
-      id="catalogo-input-busqueda" 
-      class="catalogo-input-busqueda" 
-      placeholder="Buscar por producto, marca o descripción..." 
-      autocomplete="off"
-      aria-label="Buscar productos en el catálogo"
-    >
-  </form>
-</section>
-<!-- ===== G1-BUS · HU 5.1: Motor de Búsqueda (Katherin Ortega) · fin ===== -->
+            <div id="vitrina-contenedor" class="vitrina-grid">
+                <p>Haz clic en el botón de arriba para obtener los productos.</p>
+            </div>
+        </section>
+    </main>
 
-
-<!-- ===== G1-BUS · HU 5.1: Resultados de Búsqueda (Katherin Ortega) · inicio ===== -->
-<section class="catalogo-productos-seccion" aria-label="Vitrina de productos">
-  <h2 class="catalogo-solo-lector">Listado de productos filtrados</h2>
-  
-  
-  <div id="catalogo-productos-contenedor" class="catalogo-grid-productos">
-    <p class="catalogo-cargando">Cargando productos del catálogo...</p>
-  </div>
-</section>
-<!-- ===== G1-BUS · HU 5.1: Resultados de Búsqueda · fin ===== -->
-
-      <!-- ===== G1-MAR · Marca · inicio ===== -->
-      <section class="catalogo-marcas" aria-labelledby="catalogo-marcas-titulo">
-        <h2 id="catalogo-marcas-titulo" class="catalogo-solo-lector">Filtrar por marca</h2>
-        <div id="catalogo-marcas"></div>
-        <p id="catalogo-error" class="catalogo-error" role="alert" hidden></p>
-      </section>
-      <!-- ===== G1-MAR · Marca · fin ===== -->
-       
-       <!-- ===== G7-CUP · Cupón · inicio ===== -->
-       <section class="catalogo-presentaciones" aria-labelledby="catalogo-presentaciones-titulo">
-        <h2 id="catalogo-presentaciones-titulo" class="catalogo-solo-lector">Gestión de Presentaciones y Empaques</h2>
-        <p>Listado de presentaciones comerciales de productos Nutresa.</p>
-        <div class="catalogo-tabla-responsive">
-          <table class="catalogo-presentacion-tabla">
-            <caption>Listado de presentaciones comerciales y empaques</caption>
-            <thead>
-              <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Nombre Presentación</th>
-                <th scope="col">Contenido Neto</th>
-                <th scope="col">Medida</th>
-                <th scope="col">Empaque</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-              </tr>
-            </thead>
-            <tbody id="tabla-presentaciones-body">
-
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <!-- ===== G7-CUP · Cupón · fin ===== -->
-
-      <!-- ===== G7-CUP · Cupón · inicio - Duvan Tique ===== -->
-      <section class="contenedor-formulario" style="margin-top: 30px;">
-        <h2>Registrar Presentación Comercial</h2>
-
-        <form id="formCrearPresentacion" novalidate>
-          <div class="grupo-campo">
-            <label for="idPresentacion">idPresentacion</label>
-            <input 
-              type="text" 
-              id="idPresentacion" 
-              name="idPresentacion" 
-              required 
-              placeholder="Ej: PRES-001"
-            />
-          </div>
-
-          <div class="grupo-campo">
-            <label for="nombrePresentacion">nombrePresentacion</label>
-            <input 
-              type="text" 
-              id="nombrePresentacion" 
-              name="nombrePresentacion" 
-              required 
-              minlength="3" 
-              placeholder="Ej: Sazón Premium Blend"
-            />
-          </div>
-
-          <div class="grupo-campo">
-            <label for="pesoNeto">pesoNeto</label>
-            <input 
-              type="number" 
-              id="pesoNeto" 
-              name="pesoNeto" 
-              required 
-              min="0.01" 
-              step="0.01" 
-              placeholder="Ej: 500.00"
-            />
-          </div>
-
-          <button type="submit" id="btnGuardar">Guardar Presentación</button>
-        </form>
-
-        <div id="alertaFormulario" class="alerta" role="alert" aria-live="polite" hidden></div>
-      </section>
-      <!-- ===== G7-CUP · Cupón · fin ===== -->
-      <!-- ===== G1-CAT · Categorías · inicio ===== -->
-      <!-- Autor: Daniel Acevedo Yepes -->
-      <!-- Historia de Usuario 2.1: Visualización del listado de categorías -->
-      <section class="catalogo-categorias-seccion">
-          <!-- Formulario de creación HU 2.2 -Autor Daniel Acevedo - fin -->
-          <form id="catalogo-form-categoria" class="catalogo-formulario">
-              <fieldset>
-                  <legend>Registrar Nueva Categoría</legend>
-                  
-                  <div class="catalogo-form-grupo">
-                      <label for="idCategoria">ID de la Categoría</label>
-                      <input type="number" id="idCategoria" name="idCategoria" required min="1">
-                  </div>
-                  
-                  <div class="catalogo-form-grupo">
-                      <label for="nombreCategoria">Nombre de la Categoría</label>
-                      <input type="text" id="nombreCategoria" name="nombreCategoria" required>
-                  </div>
-                  
-                  <button type="submit" class="catalogo-btn-guardar">Guardar Categoría</button>
-              </fieldset>
-              
-              <!-- Contenedor para notificaciones de error o éxito -->
-              <div id="catalogo-categoria-alerta" role="alert" hidden></div>
-          </form>       
-           <!-- Formulario de creación HU 2.2 -Autor Daniel Acevedo - fin-->
-          <h2>Categorías de Productos</h2>
-          <div id="catalogo-categorias-contenedor" class="catalogo-grid-categorias">
-              <p>Cargando categorías...</p>
-          </div>
-      </section>
-      <!-- ===== G1-CAT · Categorías · fin ===== -->
-
-    </section>
-
-    <!-- ===== G1-PRO · Productos · inicio (Santiago Ocampo) ===== -->
-<section id="catalogo-vitrina-seccion" class="bloque-modulo">
-    <h2>Vitrina de Productos Nutresa</h2>
-    <!-- Estilo en línea temporal de prueba -->
-    <div id="catalogo-vitrina-contenedor" class="catalogo-vitrina-grid" style="display: flex !important; flex-wrap: wrap !important; gap: 20px !important;">
-    </div>
-</section>
-<!-- ===== G1-PRO · Productos · fin ===== -->
-    
-
-
-
-  </main>
-
-  <footer data-layout="footer"></footer>
-
-  <script src="../../services/api.config.js"></script>
-  <script src="../../data/usuario.js"></script>
-  <script src="../../data/productos.js"></script>
-  <script src="../../data/recetas.js"></script>
-  <script src="../../data/modulos.js"></script>
-  <script src="../../assets/js/layout.js"></script>
-  <script src="servicio.js"></script>
-  <script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

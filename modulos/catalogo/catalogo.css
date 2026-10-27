@@ -1,510 +1,134 @@
-
-/* ===== G1-BUS · HU 5.1: Motor de Búsqueda (Katherin Ortega) · inicio ===== */
-
-.catalogo-busqueda-seccion {
-  margin: 1.5rem 0 2rem 0;
-  width: 100%;
+:root {
+    --verde: #3d8e33;
+    --tinta: #2a1605;
+    --texto: #3f4040;
+    --card: #ffffff;
+    --linea: #dad9c4;
+    --crema: #f4f4e8;
 }
 
-
-.catalogo-busqueda-bar {
-  display: flex;
-  align-items: center;
-  background-color: #ffffff;
-  border: 2px solid #cbd5e1; 
-  border-radius: 6px; 
-  padding: 0.5rem 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--crema);
+    color: var(--texto);
+    margin: 0;
+    padding: 20px;
 }
 
-
-.catalogo-busqueda-bar:focus-within {
-  border-color: #d32f2f; 
-  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
-}
-
-
-.catalogo-busqueda-icono {
-  font-size: 1.1rem;
-  padding-right: 0.75rem;
-  margin-right: 0.75rem;
-  color: #64748b;
-  border-right: 1px solid #cbd5e1;
-  display: flex;
-  align-items: center;
-  user-select: none;
-}
-
-.catalogo-input-busqueda {
-  width: 100%;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  color: #1e293b;
-  background: transparent;
-  font-family: inherit;
-}
-
-.catalogo-input-busqueda::placeholder {
-  color: #94a3b8;
-}
-
-
-.catalogo-solo-lector {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* ===== G1-BUS · HU 5.1: Motor de Búsqueda · fin ===== */
-
-
-/* ===== G1-BUS · Estilos de Vitrina de Productos (Katherin Ortega) · inicio ===== */
-
-/* Grilla de productos adaptable */
-.catalogo-grid-productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-/* Tarjeta individual de producto */
-.catalogo-producto-tarjeta {
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 1.25rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.catalogo-producto-tarjeta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-.catalogo-producto-titulo {
-  font-size: 1.1rem;
-  color: #1e293b;
-  margin-bottom: 0.5rem;
-}
-
-.catalogo-producto-descripcion {
-  font-size: 0.9rem;
-  color: #64748b;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.catalogo-producto-precio {
-  font-weight: bold;
-  color: #d32f2f;
-  font-size: 1.1rem;
-}
-
-/* Estado cuando no existen resultados */
-.catalogo-sin-resultados {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 2.5rem;
-  color: #64748b;
-  font-size: 1rem;
-  background-color: #f8fafc;
-  border-radius: 8px;
-  border: 2px dashed #cbd5e1;
-}
-
-/* ===== G1-BUS · Estilos de Vitrina de Productos · fin ===== */
-
-
-
-
-/* ===== G1-MAR · Marca · inicio ===== */
-.catalogo-marcas-lista {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.catalogo-marca-btn {
-  padding: 0.45rem 1rem;
-  font: inherit;
-  font-weight: 600;
-  color: var(--tinta);
-  background: var(--card);
-  border: 1px solid var(--linea);
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.catalogo-marca-btn:hover {
-  border-color: var(--verde);
-  background: var(--crema-2);
-}
-
-.catalogo-marca-btn:focus-visible {
-  outline: 3px solid var(--hoja);
-  outline-offset: 2px;
-}
-
-.catalogo-marca-btn--activa,
-.catalogo-marca-btn--activa:hover {
-  color: var(--card);
-  background: var(--verde);
-  border-color: var(--verde);
-}
-
-.catalogo-error {
-  margin: 1rem 0 0;
-  color: var(--rojo);
-  font-weight: 600;
-}
-
-.catalogo-solo-lector {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-/* ===== G1-MAR · Marca · fin ===== */
-
-/* ===== G7-CUP · Cupón · inicio - Duvan Tique ===== */
-.contenedor-formulario {
-  background-color: #ffffff;
-  border: 1px solid var(--marfil-2, #E9E8D7);
-  width: 100%;
-  max-width: 480px;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(17, 70, 34, 0.08);
-  margin: 0 auto;
-}
-
-.contenedor-formulario h2 {
-  color: var(--verde-noche, #114622);
-  margin-top: 0;
-  font-size: 22px;
-  border-bottom: 2px solid var(--marfil-2, #E9E8D7);
-  padding-bottom: 12px;
-  margin-bottom: 24px;
-}
-
-.grupo-campo {
-  margin-bottom: 20px;
-}
-
-.grupo-campo label {
-  display: block;
-  font-weight: 600;
-  color: var(--verde-nutresa, #215B33);
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.grupo-campo input {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid var(--marfil-2, #E9E8D7);
-  border-radius: 6px;
-  background-color: var(--marfil, #F4F4E8);
-  font-size: 14px;
-  color: var(--gris-texto, #3F4040);
-  box-sizing: border-box;
-  transition: all 0.2s ease;
-}
-
-.grupo-campo input:focus {
-  outline: none;
-  border-color: var(--verde-hoja, #3D8E33);
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(61, 142, 51, 0.15);
-}
-
-#btnGuardar {
-  background-color: var(--lima, #7FBA00);
-  color: var(--cafe-oscuro, #2A1605);
-  font-weight: bold;
-  border: none;
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 10px;
-}
-
-#btnGuardar:hover {
-  background-color: #6da200;
-}
-
-.alerta {
-  margin-top: 20px;
-  padding: 12px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.alerta-exito {
-  background-color: rgba(61, 142, 51, 0.15);
-  color: var(--verde-nutresa, #215B33);
-  border: 1px solid var(--verde-hoja, #3D8E33);
-}
-
-.alerta-error {
-  background-color: rgba(214, 18, 26, 0.1);
-  color: var(--rojo-nutresa, #D6121A);
-  border: 1px solid var(--rojo-nutresa, #D6121A);
-/* ===== G7-CUP · Cupón · inicio ===== */
-.catalogo-presentaciones {
-  margin-top: 2rem;
-}
-
-.catalogo-tabla-responsive {
-  width: 100%;
-  overflow-x: auto;
-  background: var(--card, #ffffff);
-  border: 1px solid var(--linea, #E9E8D7);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  margin-top: 1rem;
-}
-
-.catalogo-presentacion-tabla {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-family: inherit;
-  font-size: 0.95rem;
-  color: var(--tinta, #3F4040);
-}
-
-.catalogo-presentacion-tabla th,
-.catalogo-presentacion-tabla td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--linea, #E9E8D7);
-}
-
-.catalogo-presentacion-tabla th {
-  background-color: var(--verde, #215B33);
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.catalogo-presentacion-tabla tbody tr:hover {
-  background-color: var(--crema-2, #E9E8D7);
-}
-
-.catalogo-presentacion-tabla tbody tr:last-child td {
-  border-bottom: none;
-}
-/* ===== G7-CUP · Cupón · fin ===== */
-/* ===== G1-CAT · Categorías · inicio ===== */
-/* Autor: Daniel Acevedo Yepes */
-/* Historia de Usuario 2.1: Visualización del listado de categorías */
-
-.catalogo-categorias-seccion {
-    margin-top: 2rem;
-}
-
-.catalogo-grid-categorias {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.catalogo-categoria-card {
-    background-color: var(--card);
-    border: 1px solid var(--linea);
-    border-radius: 8px;
-    padding: 2rem 1.5rem;
+.header {
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
+    margin-bottom: 25px;
 }
 
-.catalogo-categoria-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-.catalogo-categoria-card h3 {
-    margin: 0;
+.header h1 {
     color: var(--tinta);
-    font-size: 1.25rem;
-}
-/* ===== G1-CAT · Categorías · fin ===== */
-
-/* ===== G1-CAT · Categorías · inicio ===== */
-/* Autor: Daniel Acevedo Yepes */
-/* Historia de Usuario 2.1 y 2.2: Listado y Registro de categorías */
-
-.catalogo-categorias-seccion {
-    margin-top: 2rem;
+    margin: 0;
 }
 
-.catalogo-grid-categorias {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
+.contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-.catalogo-categoria-card {
-    background-color: var(--card);
-    border: 1px solid var(--linea);
-    border-radius: 8px;
-    padding: 2rem 1.5rem;
+/* Estilos del contenedor del botón de acción */
+.acciones {
+    margin-bottom: 25px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
 }
 
-.catalogo-categoria-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-.catalogo-categoria-card h3 {
-    margin: 0;
-    color: var(--tinta);
-    font-size: 1.25rem;
-}
-
-/* --- Estilos HU 2.2: Formulario de Registro --- */
-.catalogo-formulario {
-    background-color: var(--card);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--linea);
-    margin-bottom: 2rem;
-}
-
-.catalogo-formulario fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-
-.catalogo-formulario legend {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--tinta);
-    margin-bottom: 1rem;
-}
-
-.catalogo-form-grupo {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.catalogo-form-grupo label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--tinta);
-}
-
-.catalogo-form-grupo input {
-    padding: 0.5rem;
-    border: 1px solid var(--linea);
-    border-radius: 4px;
-    font-family: inherit;
-}
-
-.catalogo-btn-guardar {
+.btn-principal {
     background-color: var(--verde);
     color: var(--card);
-    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
+    transition: transform 0.1s ease, opacity 0.2s ease;
 }
 
-.catalogo-alerta-exito {
-    margin-top: 1rem;
-    color: var(--hoja);
-    font-weight: 600;
+.btn-principal:hover {
+    opacity: 0.9;
 }
 
-.catalogo-alerta-error {
-    margin-top: 1rem;
-    color: var(--rojo);
-    font-weight: 600;
+.btn-principal:active {
+    transform: scale(0.98);
 }
-} /* <--- Esta llave extra cierra la regla que quedó abierta más arriba */
 
-/* ===== G1-CAT · Categorías · fin ===== */
+.btn-principal:disabled {
+    background-color: var(--linea);
+    color: var(--texto);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
-/* ===== G1-PRO · Productos · inicio (Santiago Ocampo) ===== */
-.catalogo-vitrina-grid {
+.vitrina-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: flex-start;
-    padding: 15px 0;
 }
 
-.catalogo-producto-tarjeta {
+.tarjeta-producto {
     width: 220px;
-    border: 1px solid var(--linea); /* Variable oficial de sazon.css */
+    background-color: var(--card);
+    border: 1px solid var(--linea);
     border-radius: 8px;
-    background-color: var(--card); /* Variable oficial de sazon.css */
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-producto figure {
+    margin: 0;
+    width: 100%;
+    height: 160px;
+    background-color: var(--crema);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     box-sizing: border-box;
 }
 
-.catalogo-producto-tarjeta figure {
-    margin: 0;
-    width: 100%;
-    height: 150px;
-    overflow: hidden;
+.tarjeta-producto img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
-.catalogo-producto-tarjeta img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.catalogo-producto-info {
+.info-producto {
     padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 
-.catalogo-producto-info h3 {
+.info-producto h3 {
     margin: 0 0 8px 0;
     font-size: 1rem;
-    color: var(--tinta); /* Variable oficial de sazon.css */
+    color: var(--tinta);
 }
 
-.catalogo-producto-meta {
-    margin: 0;
+.info-producto p {
+    margin: 0 0 10px 0;
     font-size: 0.85rem;
-    color: var(--tinta); /* Variable oficial de sazon.css */
-    opacity: 0.75;
+    color: var(--texto);
 }
-/* ===== G1-PRO · Productos · fin ===== */
+
+.btn-detalle {
+    background-color: var(--verde);
+    color: var(--card);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-detalle:hover {
+    opacity: 0.9;
+}
